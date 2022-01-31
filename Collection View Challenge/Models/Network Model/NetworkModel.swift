@@ -10,9 +10,9 @@ import Foundation
 
 class NetworkModel {
     
-    func fetchProductsFromAPI(completion: @escaping ([Products]) -> Void) -> Void{
+    func fetchProductsFromAPI(completion: @escaping ([Products]?) -> Void) -> Void{
         
-        let url = URL(string: "https://jsonkeeper.com/b/T0FD")!
+        let url = URL(string: URLs.apiURL)!
 
         var request = URLRequest(url: url)
 

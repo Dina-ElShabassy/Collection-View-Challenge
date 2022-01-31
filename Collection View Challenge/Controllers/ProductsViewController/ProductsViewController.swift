@@ -8,31 +8,49 @@
 
 import UIKit
 
-class ProductsViewController: UIViewController {
+class ProductsViewController: UIViewController{
 
     @IBOutlet weak var productsCollectionView: UICollectionView!
     
     var networkModel : NetworkModel = NetworkModel()
     var productsArray = [Products]()
+    var isFetching = false
+    var fileManager : FileManagerModel = FileManagerModel()
+    var isConnectedToWifi : Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.checkConnectivity()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(getDataFromFileManager(_:)), name: .internetNotification, object: nil)
 
         // Do any additional setup after loading the view.
         
         //delegates
         productsCollectionView.delegate = self
         productsCollectionView.dataSource = self
+        productsCollectionView.prefetchDataSource = self
+        productsCollectionView.isPrefetchingEnabled = true
         
-        //get products from api
-        networkModel.fetchProductsFromAPI { (products) in
-            self.productsArray = products
-            DispatchQueue.main.async{
-                self.productsCollectionView.reloadData()
-            }
+    }
+    
+    @objc func getDataFromFileManager(_ notification : Notification) {
+        if let data = notification.userInfo{
+         let isConnected : Bool = data["isConnected"]! as! Bool
+            isConnectedToWifi = isConnected
+         if !isConnected{
+            productsArray = fileManager.readArrayOfProducts()
             
-        }
+         }else{
+            //fetch data
+            fetchData()
+            }
+         DispatchQueue.main.async {
+            self.productsCollectionView.reloadData()
+         }
         
+      }
     }
 
 }

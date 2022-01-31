@@ -21,15 +21,6 @@ final class ImageDownloader {
         cachedImages = [:]
         imagesDownloadTasks = [:]
     }
-    
-     /**
-    Downloads and returns images through the completion closure to the caller
-
-     - Parameter imageUrlString: The remote URL to download images from
-     - Parameter completionHandler: A completion handler which returns two parameters. First one is an image which may or may
-     not be cached and second one is a bool to indicate whether we returned the cached version or not
-     - Parameter placeholderImage: Placeholder image to display as we're downloading them from the server
-     */
      
     // A serial queue to be able to write the non-thread-safe dictionary
     let serialQueueForImages = DispatchQueue(label: "images.queue", attributes: .concurrent)
