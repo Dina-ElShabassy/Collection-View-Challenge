@@ -21,17 +21,34 @@ extension ProductsViewController : UICollectionViewDelegate, UICollectionViewDat
         cell?.productDescription.text = productsArray[indexPath.row].productDescription
         
         let imageUrl = productsArray[indexPath.row].image.url
-        let productId = productsArray[indexPath.row].id
         
         ImageDownloader.shared.downloadImage(with: imageUrl, completionHandler: { (image, cached) in
 
             cell?.productImage.image = image
-            //self.fileManager.saveProductImage(productId: productId, image: image!)
 
         }, placeholderImage: UIImage(named: "placeholder_profile_pic"))
         
         return cell!
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let productDetailsVC = storyboard?.instantiateViewController(identifier: "productDetails") as? ProductDetailsViewController
+        
+        let imageUrl = productsArray[indexPath.row].image.url
+        
+        ImageDownloader.shared.downloadImage(with: imageUrl, completionHandler: { (image, cached) in
+
+            productDetailsVC?.productImg  = image
+
+        }, placeholderImage: UIImage(named: "placeholder_profile_pic"))
+        
+        productDetailsVC?.productDesc = productsArray[indexPath.row].productDescription
+        
+        self.navigationController?.pushViewController(productDetailsVC!, animated: true)
+        
+    }
+    
     
     
 }
@@ -51,24 +68,10 @@ extension ProductsViewController : UICollectionViewDataSourcePrefetching{
     
 }
 
-extension ProductsViewController : UICollectionViewDelegateFlowLayout{
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-         // vertical spacing between items
-         return 5
-      }
-      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-         //horizental spacing between items
-         return 5
-      }
-       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-       {
-        
-          let width = (collectionView.frame.width - 5 )/2
-         return CGSize(width: width, height: width*1.5)
-      }
-      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets{
-             return UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
-         }
-   
+extension ProductsViewController : PinterestLayoutDelegate {
+  func collectionView(
+      _ collectionView: UICollectionView,
+      heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
+    return CGFloat(productsArray[indexPath.row].image.height)
+  }
 }

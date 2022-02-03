@@ -19,12 +19,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gz3-V4-3mf">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Srl-Iw-inT">
-                                    <size key="itemSize" width="198" height="292"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
+                                <collectionViewLayout key="collectionViewLayout" id="p5z-Jo-H1a" customClass="PinterestLayout" customModule="Collection_View_Challenge" customModuleProvider="target"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="cell" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cell" id="qEK-uj-EYu" customClass="ProductCollectionViewCell" customModule="Collection_View_Challenge" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="198" height="292"/>
@@ -35,6 +30,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6c6-sl-Kp5">
                                                     <rect key="frame" x="10" y="10" width="178" height="192"/>
+                                                    <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJX-QD-1Ja">
                                                     <rect key="frame" x="10" y="251.5" width="178" height="20.5"/>
@@ -90,7 +86,58 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4iF-Ll-pfB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="831.88405797101461" y="75.669642857142847"/>
+            <point key="canvasLocation" x="862" y="76"/>
+        </scene>
+        <!--Product Details View Controller-->
+        <scene sceneID="hVt-hc-bkZ">
+            <objects>
+                <viewController storyboardIdentifier="productDetails" id="5xH-98-lFp" customClass="ProductDetailsViewController" customModule="Collection_View_Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ahH-eq-6rw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ljw-l9-HcZ">
+                                <rect key="frame" x="20" y="59" width="374" height="476.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyN-ka-25G">
+                                <rect key="frame" x="20" y="555.5" width="374" height="21.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWi-d1-uzb">
+                                <rect key="frame" x="20" y="591.5" width="374" height="20.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ljw-l9-HcZ" firstAttribute="leading" secondItem="wHS-dX-HJV" secondAttribute="leading" constant="20" id="3ra-JB-kOP"/>
+                            <constraint firstItem="eyN-ka-25G" firstAttribute="leading" secondItem="wHS-dX-HJV" secondAttribute="leading" constant="20" id="7J8-6p-bCp"/>
+                            <constraint firstItem="ljw-l9-HcZ" firstAttribute="top" secondItem="wHS-dX-HJV" secondAttribute="top" constant="15" id="9jy-3Q-XVu"/>
+                            <constraint firstItem="wHS-dX-HJV" firstAttribute="trailing" secondItem="eyN-ka-25G" secondAttribute="trailing" constant="20" id="Dnb-7a-xKI"/>
+                            <constraint firstItem="wHS-dX-HJV" firstAttribute="trailing" secondItem="ljw-l9-HcZ" secondAttribute="trailing" constant="20" id="GMm-zF-xAV"/>
+                            <constraint firstItem="wHS-dX-HJV" firstAttribute="bottom" secondItem="MWi-d1-uzb" secondAttribute="bottom" priority="500" constant="250" id="ezc-7i-BNW"/>
+                            <constraint firstItem="eyN-ka-25G" firstAttribute="top" secondItem="ljw-l9-HcZ" secondAttribute="bottom" constant="20" id="fn9-07-45Q"/>
+                            <constraint firstItem="MWi-d1-uzb" firstAttribute="leading" secondItem="wHS-dX-HJV" secondAttribute="leading" constant="20" id="ibT-LN-RrF"/>
+                            <constraint firstItem="MWi-d1-uzb" firstAttribute="top" secondItem="eyN-ka-25G" secondAttribute="bottom" constant="14.5" id="pxV-gS-RZP"/>
+                            <constraint firstItem="wHS-dX-HJV" firstAttribute="trailing" secondItem="MWi-d1-uzb" secondAttribute="trailing" constant="20" id="w5P-EP-3ZD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wHS-dX-HJV"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eoW-U4-XCa"/>
+                    <connections>
+                        <outlet property="productDescription" destination="MWi-d1-uzb" id="mnN-ds-9mU"/>
+                        <outlet property="productImage" destination="ljw-l9-HcZ" id="bko-br-z6p"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TeO-Fb-TKj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1600.0000000000002" y="75.669642857142847"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E63-XC-E3g">

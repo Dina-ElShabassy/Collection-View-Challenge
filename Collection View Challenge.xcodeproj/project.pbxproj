@@ -24,6 +24,8 @@
 		A9A0096727A4B2140002868A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9A0096627A4B2140002868A /* Assets.xcassets */; };
 		A9A0096A27A4B2140002868A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9A0096827A4B2140002868A /* LaunchScreen.storyboard */; };
 		A9A0097827A4B8500002868A /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A0097727A4B8500002868A /* NetworkModel.swift */; };
+		A9A8A74127AACE45001763ED /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A8A74027AACE45001763ED /* ProductDetailsViewController.swift */; };
+		A9A8A74627AAFA71001763ED /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A8A74527AAFA71001763ED /* PinterestLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		A9A0096927A4B2140002868A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9A0096B27A4B2140002868A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9A0097727A4B8500002868A /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
+		A9A8A74027AACE45001763ED /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		A9A8A74527AAFA71001763ED /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,7 @@
 		A9A0095927A4B2100002868A /* Collection View Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				A9A8A74227AAF964001763ED /* Layouts */,
 				A96BED8027A760A2007A41A7 /* POJO */,
 				A95B34E827A5F043009F1E30 /* Constants */,
 				A9A0097227A4B5820002868A /* Models */,
@@ -173,6 +178,7 @@
 		A9A0097327A4B58A0002868A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A9A8A73F27AACE0B001763ED /* ProductDetailsViewController */,
 				A95B34D927A5B995009F1E30 /* ProductsViewController */,
 			);
 			path = Controllers;
@@ -186,6 +192,22 @@
 				A90670D827A86D8900DA0243 /* NetworkMonitor.swift */,
 			);
 			path = "Network Model";
+			sourceTree = "<group>";
+		};
+		A9A8A73F27AACE0B001763ED /* ProductDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A9A8A74027AACE45001763ED /* ProductDetailsViewController.swift */,
+			);
+			path = ProductDetailsViewController;
+			sourceTree = "<group>";
+		};
+		A9A8A74227AAF964001763ED /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				A9A8A74527AAFA71001763ED /* PinterestLayout.swift */,
+			);
+			path = Layouts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +284,7 @@
 				A9A0095B27A4B2100002868A /* AppDelegate.swift in Sources */,
 				A90670D927A86D8900DA0243 /* NetworkMonitor.swift in Sources */,
 				A992C51F27A607E40072251C /* ProductViewController+Methods.swift in Sources */,
+				A9A8A74127AACE45001763ED /* ProductDetailsViewController.swift in Sources */,
 				A90670DE27A86E3B00DA0243 /* URLs.swift in Sources */,
 				A95B34DF27A5BBC5009F1E30 /* ProductsViewController+CollectionView.swift in Sources */,
 				A95B34E127A5BF29009F1E30 /* ProductCollectionViewCell.swift in Sources */,
@@ -270,6 +293,7 @@
 				A9A0097827A4B8500002868A /* NetworkModel.swift in Sources */,
 				A9A0095D27A4B2100002868A /* SceneDelegate.swift in Sources */,
 				A90670DC27A86E0600DA0243 /* NotificationNameExtension.swift in Sources */,
+				A9A8A74627AAFA71001763ED /* PinterestLayout.swift in Sources */,
 				A95B34EC27A5F4DC009F1E30 /* Products.swift in Sources */,
 				A96BED8327A76147007A41A7 /* FileManagerModel.swift in Sources */,
 				A95B34E327A5E2FE009F1E30 /* ImageDownloader.swift in Sources */,

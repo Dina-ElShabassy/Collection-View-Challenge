@@ -22,7 +22,6 @@ final class ImageDownloader {
         imagesDownloadTasks = [:]
     }
      
-    // A serial queue to be able to write the non-thread-safe dictionary
     let serialQueueForImages = DispatchQueue(label: "images.queue", attributes: .concurrent)
     let serialQueueForDataTasks = DispatchQueue(label: "dataTasks.queue", attributes: .concurrent)
     	
@@ -31,23 +30,28 @@ final class ImageDownloader {
                    completionHandler: @escaping (UIImage?, Bool) -> Void,
                    placeholderImage: UIImage?) {
 
+        //if url is nil return placeholder image
     guard let imageUrlString = imageUrlString else {
         completionHandler(placeholderImage, true)
         return
     }
 
+        //image is already cached
     if let image = getCachedImageFrom(urlString: imageUrlString) {
         completionHandler(image, true)
     } else {
+        // if we cannot construct the URL object through input string value, return placeholder image
         guard let url = URL(string: imageUrlString) else {
             completionHandler(placeholderImage, true)
             return
         }
 
+        //Return the control back to the calling function, if before request executes, if we find that the task to download image from given URL already exists and is in progress
         if let _ = getDataTaskFrom(urlString: imageUrlString) {
             return
         }
 
+        //if all conditions fails, create a task to download image by passing the input URL string and waiting for that download to finish.
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
 
             guard let data = data else {
@@ -68,7 +72,7 @@ final class ImageDownloader {
                 self.cachedImages[imageUrlString] = image
             }
 
-            // Clear out the finished task from download tasks container
+            // Clear out the finished task from download tasks container to avoid duplicate tasks
             _ = self.serialQueueForDataTasks.sync(flags: .barrier) {
                 self.imagesDownloadTasks.removeValue(forKey: imageUrlString)
             }

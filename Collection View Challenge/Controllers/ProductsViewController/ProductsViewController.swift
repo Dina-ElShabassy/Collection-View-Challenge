@@ -24,14 +24,17 @@ class ProductsViewController: UIViewController{
         self.checkConnectivity()
         
         NotificationCenter.default.addObserver(self, selector: #selector(getDataFromFileManager(_:)), name: .internetNotification, object: nil)
-
-        // Do any additional setup after loading the view.
         
         //delegates
         productsCollectionView.delegate = self
         productsCollectionView.dataSource = self
         productsCollectionView.prefetchDataSource = self
         productsCollectionView.isPrefetchingEnabled = true
+        
+        //set this view as the delegate for the layout
+        if let layout = productsCollectionView?.collectionViewLayout as? PinterestLayout {
+          layout.delegate = self
+        }
         
     }
     
